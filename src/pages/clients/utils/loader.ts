@@ -1,7 +1,7 @@
 import API from "@/api/client";
 import { QueryClient } from "@tanstack/react-query";
 
-const clientsQuery = {
+export const clientsQuery = {
   queryKey: ["ClientsQuery"],
   queryFn: () => API.get("clients"),
 };

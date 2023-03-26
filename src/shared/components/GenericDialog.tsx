@@ -26,38 +26,14 @@ export const GenericDialog = ({
   const { label: closeButtonLabel, ...closeButtonProps } = closeButton;
 
   return (
-    <Dialog
-      onClose={onClose}
-      fullWidth
-      {...props}
-      PaperProps={{
-        sx: {
-          maxWidth: "842px",
-          padding: "20px 50px 20px 50px",
-          borderRadius: "50px",
-        },
-      }}
-    >
+    <Dialog onClose={onClose} fullWidth {...props}>
       <DialogTitle sx={{ pb: 3 }} variant="h3" textAlign="center">
         {title}
       </DialogTitle>
-      <DialogContent sx={{ px: "8px", py: 3 }}>
-        <Paper
-          sx={{
-            backgroundColor: "common.white",
-            color: "common.black",
-            borderRadius: "10px",
-            height: "300px",
-            overflow: "auto",
-            p: 2,
-          }}
-        >
-          {children}
-        </Paper>
-      </DialogContent>
+      <DialogContent sx={{ px: "8px", py: 3 }}>{children}</DialogContent>
       <DialogActions
         sx={{
-          justifyContent: "flex-start",
+          justifyContent: "center",
           columnGap: 1,
           rowGap: 1,
           flexWrap: "wrap",
@@ -70,7 +46,7 @@ export const GenericDialog = ({
         )}
         {!!closeButton && (
           <Button
-            variant="contained"
+            variant="outlined"
             color="secondary"
             {...closeButtonProps}
             onClick={onClose}

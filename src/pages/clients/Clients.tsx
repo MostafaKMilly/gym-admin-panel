@@ -2,11 +2,19 @@ import { Box, Button, Typography } from "@mui/material";
 import { Hero } from "./components";
 import { loader } from "./utils/loader";
 import { ClientsList } from "./components/ClientsList";
+import { useManageClients } from "./hooks";
+import { GenericDialog } from "@/shared/components";
 import React from "react";
-import { Client } from "./hooks/useClients";
 
 export const Clients = () => {
-  const [selectedClients, setSelectedClients] = React.useState<Client[]>([]);
+  const {
+    selectedClients,
+    handleSelectionClients,
+    closeDialog,
+    isDialogOpen,
+    openDialog,
+    handleDeleteClients,
+  } = useManageClients();
 
   return (
     <Box>
@@ -25,18 +33,36 @@ export const Clients = () => {
             >
               Edit
             </Button>
-            <Button color="error" disabled={selectedClients.length === 0}>
+            <Button
+              color="error"
+              disabled={selectedClients.length === 0}
+              onClick={() => openDialog("delete")}
+            >
               Delete
             </Button>
           </Box>
         </Box>
         <ClientsList
           selectedClients={selectedClients}
-          handleSelectedClient={(clients: Client[]) => {
-            setSelectedClients(clients);
-          }}
+          handleSelectedClient={handleSelectionClients}
         />
       </Box>
+      <GenericDialog
+        open={isDialogOpen("delete")}
+        onClose={closeDialog}
+        dialog={{
+          title: "Confirm Delete",
+          submitButton: {
+            color: "error",
+            label: "Delete",
+          },
+        }}
+        onSubmit={handleDeleteClients}
+      >
+        <Typography variant="body1" sx={{ color: "common.black" }}>
+          Are you sure to delete {selectedClients.length} clients ?
+        </Typography>
+      </GenericDialog>
     </Box>
   );
 };

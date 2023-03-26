@@ -1,8 +1,14 @@
+import { useQuery } from "@tanstack/react-query";
 import { useLoaderData } from "react-router-dom";
+import { clientsQuery } from "../utils/loader";
 
 export const useClients = () => {
-  const data = useLoaderData() as { clients: Client[] };
-  return data.clients;
+  const loaderData = useLoaderData() as { clients: Client[] };
+  const { data } = useQuery(clientsQuery.queryKey, {
+    initialData: loaderData.clients,
+    suspense: true,
+  });
+  return data;
 };
 
 export type Client = {
