@@ -7,6 +7,7 @@ export const CssBaselineOverrides: Components<Theme>["MuiCssBaseline"] = {
       padding: 0,
       overflowX: "hidden",
       backgroundColor: "#fafafc",
+      height: "100%",
     },
     "&": {
       scrollbarWidth: "thin",
