@@ -5,7 +5,7 @@ import { clientQuery } from "../utils/loader";
 export const useClientData = () => {
   const { id } = useParams();
   const loaderData = useLoaderData() as { client: Client };
-  const { data } = useQuery({
+  const { data } = useQuery<Client>({
     ...clientQuery(id),
     initialData: loaderData.client,
     suspense: true,
