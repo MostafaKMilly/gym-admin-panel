@@ -8,6 +8,6 @@ export const useSignout = () => {
   return () => {
     localStorage.clear();
     client.clear();
-    navigate("/");
+    navigate("/login");
   };
 };
