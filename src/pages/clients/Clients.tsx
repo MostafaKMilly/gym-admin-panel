@@ -4,7 +4,6 @@ import { loader } from "./utils/loader";
 import { ClientsList } from "./components/ClientsList";
 import { useManageClients } from "./hooks";
 import { GenericDialog } from "@/shared/components";
-import React from "react";
 
 export const Clients = () => {
   const {
