@@ -1,5 +1,10 @@
 import { Box, Button, Typography } from "@mui/material";
-import { Hero } from "./components";
+import {
+  AddClientDialog,
+  ClientForm,
+  Hero,
+  EditClientDialog,
+} from "./components";
 import { loader } from "./utils/loader";
 import { ClientsList } from "./components/ClientsList";
 import { useManageClients } from "./hooks";
@@ -13,7 +18,11 @@ export const Clients = () => {
     isDialogOpen,
     openDialog,
     handleDeleteClients,
+    handleEditClient,
+    handleAddClient,
   } = useManageClients();
+
+  const [selectedClient] = selectedClients;
 
   return (
     <Box>
@@ -24,11 +33,12 @@ export const Clients = () => {
             Clients
           </Typography>
           <Box display="flex" columnGap={2}>
-            <Button>Add</Button>
+            <Button onClick={() => openDialog("add")}>Add</Button>
             <Button
               variant="outlined"
               color="secondary"
               disabled={selectedClients.length !== 1}
+              onClick={() => openDialog("edit")}
             >
               Edit
             </Button>
@@ -62,6 +72,12 @@ export const Clients = () => {
           Are you sure to delete {selectedClients.length} clients ?
         </Typography>
       </GenericDialog>
+      <EditClientDialog open={isDialogOpen("edit")} onClose={closeDialog}>
+        <ClientForm client={selectedClient} onSubmitForm={handleEditClient} />
+      </EditClientDialog>
+      <AddClientDialog open={isDialogOpen("add")} onClose={closeDialog}>
+        <ClientForm client={selectedClient} onSubmitForm={handleAddClient} />
+      </AddClientDialog>
     </Box>
   );
 };

@@ -11,7 +11,10 @@ export const Hero = () => {
         borderRadius: "16px",
         width: "100%",
         py: 5,
-        px: 24,
+        px: {
+          xs: 10,
+          md: 24,
+        },
       }}
     >
       <Box
