@@ -4,7 +4,7 @@ import { clientsQuery } from "../utils/loader";
 
 export const useClients = () => {
   const loaderData = useLoaderData() as { clients: Client[] };
-  const { data } = useQuery({
+  const { data } = useQuery<Client[]>({
     ...clientsQuery,
     initialData: loaderData.clients,
     suspense: true,
