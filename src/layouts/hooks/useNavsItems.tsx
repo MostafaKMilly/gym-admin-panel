@@ -7,25 +7,39 @@ export const useNavsItems = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
+  const isItemActive = (path: string) => path === pathname;
+
   const navs: NavItem[] = [
     {
       label: "Clients",
-      icon: <GroupsIcon sx={{ color: "common.black" }} />,
+      icon: (
+        <GroupsIcon
+          sx={{
+            color: isItemActive("/clients") ? "common.white" : "common.black1",
+          }}
+        />
+      ),
       buttonProps: {
         onClick: () => {
-          navigate("clients");
+          navigate("/clients");
         },
-        active: pathname === "clients",
+        active: isItemActive("/clients"),
       },
     },
     {
       label: "Classes",
-      icon: <FitnessCenterIcon sx={{ color: "common.black" }} />,
+      icon: (
+        <FitnessCenterIcon
+          sx={{
+            color: isItemActive("/classes") ? "common.white" : "common.black1",
+          }}
+        />
+      ),
       buttonProps: {
         onClick: () => {
-          navigate("classes");
+          navigate("/classes");
         },
-        active: pathname === "classes",
+        active: isItemActive("/classes"),
       },
     },
   ];

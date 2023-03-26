@@ -59,6 +59,11 @@ const ListItemButton = styled(MUIListItemButton, {
   backgroundColor: active
     ? theme.palette.primary.light
     : alpha(theme.palette.secondary.light, 0.1),
+  "&:hover": {
+    backgroundColor: active
+      ? theme.palette.primary.light
+      : alpha(theme.palette.secondary.light, 0.1),
+  },
   color: active ? theme.palette.common.white : "inherit",
   borderRadius: 6,
   height: "65px",
