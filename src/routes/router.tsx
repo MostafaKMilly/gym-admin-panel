@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Classes, Clients, Login, Signup } from "@/pages";
+import { Classes, Clients, Login, Signup, ClientDetails } from "@/pages";
 import { MainLayout } from "@/layouts";
 import { QueryClient } from "@tanstack/react-query";
 
@@ -26,6 +26,11 @@ const router = (client: QueryClient) =>
           path: "clients",
           element: <Clients />,
           loader: Clients.loader(client),
+        },
+        {
+          path: "clients/:id",
+          element: <ClientDetails />,
+          loader: ClientDetails.loader(client),
         },
         {
           path: "classes",

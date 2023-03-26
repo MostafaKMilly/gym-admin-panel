@@ -26,7 +26,7 @@ export const useManageClients = () => {
       type: "success",
       position: toast.POSITION.TOP_CENTER,
     });
-    client.invalidateQueries(["ClientsQuery"]);
+    client.invalidateQueries({ queryKey: ["ClientsQuery"] });
   };
 
   const handleDeleteClients = () => {

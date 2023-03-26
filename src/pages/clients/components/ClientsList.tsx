@@ -11,12 +11,14 @@ import { useClients } from "../hooks";
 import PersonIcon from "@mui/icons-material/Person";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Client } from "../hooks/useClients";
+import { useNavigate } from "react-router-dom";
 
 export const ClientsList = ({
   handleSelectedClient,
   selectedClients,
 }: ClientsListProps) => {
   const clients = useClients();
+  const navigate = useNavigate();
 
   const handleSelectionChange = (checked: boolean, client: Client) => {
     let clients = [...selectedClients];
@@ -74,7 +76,11 @@ export const ClientsList = ({
               </Box>
             </Box>
             <Box display="flex" columnGap={2}>
-              <IconButton>
+              <IconButton
+                onClick={() => {
+                  navigate(client.id);
+                }}
+              >
                 <RemoveRedEyeIcon sx={{ color: "primary.main" }} />
               </IconButton>
             </Box>

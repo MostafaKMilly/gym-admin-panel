@@ -76,7 +76,7 @@ export const Clients = () => {
         <ClientForm client={selectedClient} onSubmitForm={handleEditClient} />
       </EditClientDialog>
       <AddClientDialog open={isDialogOpen("add")} onClose={closeDialog}>
-        <ClientForm client={selectedClient} onSubmitForm={handleAddClient} />
+        <ClientForm onSubmitForm={handleAddClient} />
       </AddClientDialog>
     </Box>
   );

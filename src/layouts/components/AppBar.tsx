@@ -35,7 +35,7 @@ export const AppBar = ({ open, toggleDrawer }: AppBarProps) => {
             <MenuIcon />
           </IconButton>
           <img
-            src="./logo.svg"
+            src="/logo.svg"
             width="54px"
             style={{ cursor: "pointer" }}
             onClick={() => navigate("/")}
