@@ -14,9 +14,9 @@ export const AppBar = ({ open, toggleDrawer }: AppBarProps) => {
   return (
     <MuiAppBar
       position="fixed"
-      color="transparent"
       elevation={1}
       sx={{
+        backgroundColor: "white",
         ...(open && {
           width: `calc(100% - 350px)`,
           marginLeft: `350px`,
@@ -29,7 +29,7 @@ export const AppBar = ({ open, toggleDrawer }: AppBarProps) => {
             size="large"
             edge="start"
             color="inherit"
-            sx={{ mr: 2 }}
+            sx={{ mr: 2, color: "common.black" }}
             onClick={toggleDrawer}
           >
             <MenuIcon />

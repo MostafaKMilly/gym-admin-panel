@@ -11,12 +11,13 @@ export const Signup = () => {
       justifyContent="center"
       height="100vh"
       overflow="hidden"
+      position="relative"
       px={1}
     >
       <img src={LogoSvgIcon} width={900} style={{ position: "absolute" }} />
       <FormContainer elevation={2}>
         <Box display="flex" flexDirection="column" alignItems="center">
-          <img src="/logo.svg" width={250} />
+          <img src="/logo.svg" width={200} />
           <Typography
             variant="h1"
             fontWeight={700}

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { AppBar } from "./components";
 import { loader } from "./utils/loader";
-import { Box, Theme, useMediaQuery } from "@mui/material";
+import { Box, Container, Theme, Toolbar, useMediaQuery } from "@mui/material";
 import { Drawer } from "./components/Drawer";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 export const MainLayout = () => {
   const matches = useMediaQuery((theme: Theme) => theme.breakpoints.up("md"));
@@ -26,6 +26,17 @@ export const MainLayout = () => {
     <Box display="flex">
       <AppBar open={drawer} toggleDrawer={toggleDrawer} />
       <Drawer open={drawer} toggleDrawer={toggleDrawer} />
+      <Container
+        maxWidth={false}
+        sx={{
+          flexGrow: 1,
+          mt: "32px",
+          marginLeft: !drawer ? `-350px` : `0px`,
+        }}
+      >
+        <Toolbar />
+        <Outlet />
+      </Container>
     </Box>
   );
 };
