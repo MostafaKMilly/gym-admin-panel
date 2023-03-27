@@ -12,7 +12,7 @@ export const Hero = () => {
         width: "100%",
         py: 5,
         px: {
-          xs: 10,
+          xs: 4,
           md: 24,
         },
       }}
@@ -25,7 +25,12 @@ export const Hero = () => {
           md: "nowrap",
         }}
       >
-        <Box display="flex" flexDirection="column" rowGap="40px">
+        <Box
+          display="flex"
+          flexDirection="column"
+          rowGap="40px"
+          justifyContent="center"
+        >
           <Typography
             variant="h1"
             sx={{
@@ -47,7 +52,7 @@ export const Hero = () => {
             gym classes management system.
           </Typography>
         </Box>
-        <img src={ClassesHeroImage} width="300px" />
+        <img src={ClassesHeroImage} width="260px" />
       </Box>
     </Paper>
   );

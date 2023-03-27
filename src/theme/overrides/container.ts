@@ -2,10 +2,17 @@ import { Components, Theme } from "@mui/material";
 
 export const ContainerStylesOverrides: Components<Theme>["MuiContainer"] = {
   styleOverrides: {
-    root: {
-      paddingLeft: "32px !important",
-      paddingRight: "32px !important",
-    },
+    root: ({ theme }) => ({
+      [theme.breakpoints.up("md")]: {
+        paddingLeft: "32px !important",
+        paddingRight: "32px !important",
+      },
+
+      [theme.breakpoints.down("md")]: {
+        paddingLeft: "16px !important",
+        paddingRight: "16px !important",
+      },
+    }),
   },
   variants: [
     {

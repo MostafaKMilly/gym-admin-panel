@@ -11,11 +11,17 @@ import {
   Typography,
   alpha,
   styled,
+  useMediaQuery,
+  useTheme,
+  IconButton,
 } from "@mui/material";
 import { useNavsItems } from "../hooks";
+import CloseIcon from "@mui/icons-material/Close";
 
 export const Drawer = ({ toggleDrawer, ...props }: DrawerProps) => {
   const navs = useNavsItems();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <MuiDrawer
@@ -24,9 +30,9 @@ export const Drawer = ({ toggleDrawer, ...props }: DrawerProps) => {
       elevation={0}
       anchor="left"
       sx={{
-        width: 350,
+        width: matches && props.open ? "100%" : 350,
         "& .MuiDrawer-paper": {
-          width: 350,
+          width: matches && props.open ? "100%" : 350,
           boxSizing: "border-box",
           bgcolor: ({ palette }) => alpha(palette.primary.light, 0.09),
           borderRight: "1px solid white",
@@ -35,9 +41,14 @@ export const Drawer = ({ toggleDrawer, ...props }: DrawerProps) => {
       {...props}
     >
       <Toolbar sx={{ justifyContent: "center" }}>
-        <Typography variant="h1" fontWeight={600}>
+        <Typography variant="h1" fontWeight={600} sx={{ flexGrow: 1 }}>
           My Gym
         </Typography>
+        {matches && (
+          <IconButton onClick={toggleDrawer}>
+            <CloseIcon />
+          </IconButton>
+        )}
       </Toolbar>
       <List sx={{ display: "flex", flexDirection: "column", rowGap: "16px" }}>
         {navs.map((nav) => (
@@ -71,4 +82,5 @@ const ListItemButton = styled(MUIListItemButton, {
 
 export type DrawerProps = MuiDrawerProps & {
   toggleDrawer?: () => void;
+  open?: boolean;
 };
